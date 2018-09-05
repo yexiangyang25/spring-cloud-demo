@@ -1,4 +1,4 @@
-rootProject.name = 'cloud-demo-master'
+rootProject.name = 'spring-cloud-demo'
 include 'hello-world'
 include 'mas-weather-collection-server'
 include 'mas-weather-data-server'
