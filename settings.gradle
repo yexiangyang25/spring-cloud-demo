@@ -1,0 +1,12 @@
+rootProject.name = 'cloud-demo-master'
+include 'hello-world'
+include 'mas-weather-collection-server'
+include 'mas-weather-data-server'
+include 'mas-weather-report-server'
+include 'mas-weather-city-server'
+include 'mas-weather-eureka-server'
+include 'mas-weather-eureka-client'
+include 'mas-weather-eureka-client-feign'
+include 'mas-weather-eureka-client-zuul'
+include 'mas-weather-config-server'
+

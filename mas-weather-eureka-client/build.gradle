@@ -1,0 +1,15 @@
+group 'org.moy.spring.cloud'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url 'https://repo.spring.io/libs-milestone' }
+    mavenLocal() // 先使用maven本地仓库
+}
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+}
