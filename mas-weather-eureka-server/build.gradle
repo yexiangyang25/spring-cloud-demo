@@ -6,15 +6,14 @@ apply plugin: 'java'
 sourceCompatibility = 1.8
 
 repositories {
-    maven { url 'https://repo.spring.io/libs-milestone' }
-    mavenLocal() // 先使用maven本地仓库
+    mavenCentral()
 }
 
 dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
 }
 
-// 排除所有模块依赖
+// *** 排除所有模块依赖
 configurations {
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-thymeleaf'
 }
