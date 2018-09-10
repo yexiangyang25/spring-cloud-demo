@@ -9,4 +9,5 @@ include 'mas-weather-eureka-client'
 include 'mas-weather-eureka-client-feign'
 include 'mas-weather-eureka-client-zuul'
 include 'mas-weather-config-server'
+include 'moy-test-example'
 
