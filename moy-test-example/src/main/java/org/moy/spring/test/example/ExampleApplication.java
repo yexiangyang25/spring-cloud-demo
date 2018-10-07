@@ -2,7 +2,6 @@ package org.moy.spring.test.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * <p> 功能测试
@@ -12,7 +11,6 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * @since 1.0
  */
 @SpringBootApplication
-@ServletComponentScan
 public class ExampleApplication {
 
     public static void main(String[] args) {
