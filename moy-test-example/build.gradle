@@ -12,5 +12,8 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisBootVersion}")
+    compile("com.github.pagehelper:pagehelper-spring-boot-starter:${pagehelperBootVersion}")
+    compile("com.alibaba:druid-spring-boot-starter:${druidBootVersion}")
+    compile("mysql:mysql-connector-java")
 }
