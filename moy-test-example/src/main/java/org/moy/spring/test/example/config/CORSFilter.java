@@ -1,4 +1,4 @@
-package org.moy.spring.test.example.common;
+package org.moy.spring.test.example.config;
 
 
 import org.springframework.stereotype.Component;
