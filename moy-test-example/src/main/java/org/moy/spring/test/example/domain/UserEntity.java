@@ -3,7 +3,7 @@ package org.moy.spring.test.example.domain;
 import java.io.Serializable;
 
 /**
- * <p> 用户实体
+ * <p> 用户 实体
  * Created on 2018/10/10
  *
  * @author 叶向阳

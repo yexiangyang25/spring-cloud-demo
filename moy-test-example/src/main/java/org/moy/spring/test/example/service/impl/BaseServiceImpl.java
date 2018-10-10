@@ -43,7 +43,8 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
         String entityRepositoryName = getEntityRepositoryName(entityName);
 
         Field subRepositoryField = subClass.getDeclaredField(entityRepositoryName);
-        Field baseField = subClass.getDeclaredField(BASE_REPOSITORY_NAME);
+        subRepositoryField.setAccessible(true);
+        Field baseField = subClass.getSuperclass().getDeclaredField(BASE_REPOSITORY_NAME);
         baseField.setAccessible(true);
         baseField.set(this, subRepositoryField.get(this));
     }

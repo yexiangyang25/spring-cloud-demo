@@ -1,10 +1,9 @@
-package org.moy.spring.test.example.repository;
+package org.moy.spring.test.example.service;
 
 import org.junit.Test;
 import org.moy.spring.test.example.BaseTest;
 import org.moy.spring.test.example.domain.UserEntity;
-
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -17,14 +16,14 @@ import static org.junit.Assert.*;
  * @author 叶向阳
  * @since 1.0
  */
-public class UserRepositoryTest extends BaseTest {
+public class UserServiceTest extends BaseTest {
 
-    @Resource
-    private UserRepository repository;
+    @Autowired
+    private UserService service;
 
     @Test
     public void findAll() {
-        List<UserEntity> result = repository.findAll();
+        List<UserEntity> result = service.findAll();
         assertTrue(result != null);
     }
 }
