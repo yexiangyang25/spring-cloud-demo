@@ -5,12 +5,11 @@ import org.moy.spring.test.example.domain.UserEntity;
 import java.util.List;
 
 /**
- * <p>Description: [用户数据库操作]</p>
+ * <p> 用户数据库操作类
  * Created on 2018/10/10
  *
- * @author <a href="mailto: yexiangyang@cn.wilmar-intl.com">叶向阳</a>
- * @version 1.0
- * Copyright (c) 2018 丰益（上海）信息技术有限公司
+ * @author 叶向阳
+ * @since 1.0
  */
 public interface UserRepository{
 
