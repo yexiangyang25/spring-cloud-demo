@@ -8,6 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * <p> 解决ajax跨域问题
+ * Created on 2018/9/10
+ *
+ * @author 叶向阳
+ * @since 1.0
+ */
 @Component
 public class CORSFilter  implements Filter {
 
