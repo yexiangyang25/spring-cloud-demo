@@ -1,5 +1,6 @@
 package org.moy.spring.test.example.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.moy.spring.test.example.repository.BaseRepository;
 import org.moy.spring.test.example.service.BaseService;
 
@@ -30,23 +31,39 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
      * @author 叶向阳
      */
     @PostConstruct
-    private void initBind() throws NoSuchFieldException, IllegalAccessException {
+    private void initBind(){
         // 获取继承该类的类名 即子类
         Class<? extends BaseServiceImpl> subClass = this.getClass();
-        ParameterizedType type = (ParameterizedType) subClass.getGenericSuperclass();
-        // 获取子类第一个泛型参数 即数据库实体类
-        Class<T> entityClazz = (Class<T>) type.getActualTypeArguments()[0];
+        String entityRepositoryName = "";
+        String entityName = "";
+        String errorMsg;
+        try {
+            // 获取继承该类的类名 即子类
+            subClass = this.getClass();
+            ParameterizedType type = (ParameterizedType) subClass.getGenericSuperclass();
+            // 获取子类第一个泛型参数 即数据库实体类
+            Class<T> entityClazz = (Class<T>) type.getActualTypeArguments()[0];
 
-        String simpleName = entityClazz.getSimpleName();
-        String entityName = getEntityName(simpleName);
-        // 获取在子类中 数据库操作实体的字段名
-        String entityRepositoryName = getEntityRepositoryName(entityName);
+            String simpleName = entityClazz.getSimpleName();
+            entityName = getEntityName(simpleName);
+            // 获取在子类中 数据库操作实体的字段名
+            entityRepositoryName = getEntityRepositoryName(entityName);
 
-        Field subRepositoryField = subClass.getDeclaredField(entityRepositoryName);
-        subRepositoryField.setAccessible(true);
-        Field baseField = subClass.getSuperclass().getDeclaredField(BASE_REPOSITORY_NAME);
-        baseField.setAccessible(true);
-        baseField.set(this, subRepositoryField.get(this));
+            Field subRepositoryField = subClass.getDeclaredField(entityRepositoryName);
+            subRepositoryField.setAccessible(true);
+            Field baseField = subClass.getSuperclass().getDeclaredField(BASE_REPOSITORY_NAME);
+            baseField.setAccessible(true);
+            baseField.set(this, subRepositoryField.get(this));
+        } catch (Exception e) {
+            if (StringUtils.isEmpty(entityName)) {
+                errorMsg = String.format("初始化业务操作类模板失败,[业务操作类%s]继承[%s]的必须申明两个泛型参数,第一个泛型形参为数据库实体名,第二个泛型形参为数据库实体名主键字段对应类型!",
+                        subClass.getSimpleName(), BaseServiceImpl.class.getSimpleName());
+            } else {
+                errorMsg = String.format("初始化业务操作类模板失败,[业务操作类%s]必须要有数据库操作类实例[字段名必须为:%s],[%s必须继承%s]!",
+                        subClass.getSimpleName(), entityRepositoryName, entityRepositoryName, BaseRepository.class.getSimpleName());
+            }
+            throw new RuntimeException(errorMsg, e);
+        }
     }
 
     private String getEntityRepositoryName(String entityName) {
