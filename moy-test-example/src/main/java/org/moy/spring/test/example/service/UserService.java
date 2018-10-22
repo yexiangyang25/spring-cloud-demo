@@ -9,5 +9,6 @@ import org.moy.spring.test.example.domain.UserEntity;
  * @author 叶向阳
  * @since 1.0
  */
-public interface UserService extends BaseService<UserEntity, Long> {
+public interface UserService extends BaseTemplateService<UserEntity, Long> {
+
 }

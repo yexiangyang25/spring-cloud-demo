@@ -6,6 +6,7 @@ import org.moy.spring.test.example.domain.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.Assert.*;
 
@@ -25,5 +26,17 @@ public class UserServiceTest extends BaseTest {
     public void findAll() {
         List<UserEntity> result = service.findAll();
         assertTrue(result != null);
+    }
+
+    @Test
+    public void insert() {
+        UserEntity entity = new UserEntity();
+        String uid = UUID.randomUUID().toString();
+        Long id = 10L;
+        entity.setId(id);
+        entity.setCode(uid);
+        entity.setName(uid);
+        Integer result = service.insert(entity);
+        assertTrue(result == 1);
     }
 }

@@ -15,9 +15,8 @@ import javax.annotation.Resource;
  * @since 1.0
  */
 @Service
-public class UserServiceImpl extends BaseServiceImpl<UserEntity, Long> implements UserService {
+public class UserServiceImpl extends BaseTemplateServiceImpl<UserEntity, Long> implements UserService {
 
     @Resource
     private UserRepository userRepository;
-
 }

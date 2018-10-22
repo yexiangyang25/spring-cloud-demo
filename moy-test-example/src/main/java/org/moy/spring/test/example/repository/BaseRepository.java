@@ -1,5 +1,7 @@
 package org.moy.spring.test.example.repository;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,33 +14,31 @@ import java.util.List;
  */
 public interface BaseRepository<T, PK extends Serializable> {
 
-    Integer insert(T entity);
+    Integer insert(@Param("entity") T entity);
 
-    Integer addAll(List<T> entity);
+    Integer addAll(@Param("list") List<T> list);
 
-    Integer delete(PK id);
+    Integer delete(@Param("id") PK id);
 
-    Integer delete(T entity);
+    Integer delete(@Param("entity") T entity);
 
-    Integer deleteAll(List<PK> ids);
+    Integer deleteAll(@Param("ids") List<PK> ids);
 
-    Integer deleteAll(PK[] ids);
+    Integer update(@Param("entity") T entity);
 
-    Integer update(T entity);
+    Integer updateAll(@Param("list") List<T> entity);
 
-    Integer updateAll(List<T> entity);
-
-    List<T> query(T entity);
+    List<T> query(@Param("entity") T entity);
 
     List<T> findAll();
 
-    T get(T entity);
+    T get(@Param("entity") T entity);
 
-    T get(PK id);
+    T get(@Param("id") PK id);
 
-    List<T> find(PK[] ids);
+    List<T> find(@Param("ids") List<PK> ids);
 
     Long count();
 
-    Long count(T entity);
+    Long count(@Param("entity") T entity);
 }

@@ -7,6 +7,7 @@ import org.moy.spring.test.example.domain.UserEntity;
 import javax.annotation.Resource;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.Assert.*;
 
@@ -27,4 +28,16 @@ public class UserRepositoryTest extends BaseTest {
         List<UserEntity> result = repository.findAll();
         assertTrue(result != null);
     }
+
+    @Test
+    public void insert() {
+        UserEntity entity = new UserEntity();
+        String uid = UUID.randomUUID().toString();
+        entity.setId(6L);
+        entity.setCode(uid);
+        entity.setName(uid);
+        Integer result = repository.insert(entity);
+        assertTrue(result == 1);
+    }
+
 }

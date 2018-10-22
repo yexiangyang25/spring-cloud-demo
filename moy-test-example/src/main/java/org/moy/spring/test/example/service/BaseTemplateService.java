@@ -10,7 +10,7 @@ import java.util.List;
  * @author 叶向阳
  * @since 1.0
  */
-public interface BaseService<T, PK extends Serializable> {
+public interface BaseTemplateService<T, PK extends Serializable> {
 
     Integer insert(T entity);
 
@@ -21,8 +21,6 @@ public interface BaseService<T, PK extends Serializable> {
     Integer delete(T entity);
 
     Integer deleteAll(List<PK> ids);
-
-    Integer deleteAll(PK[] ids);
 
     Integer update(T entity);
 
@@ -36,7 +34,7 @@ public interface BaseService<T, PK extends Serializable> {
 
     T get(PK id);
 
-    List<T> find(PK[] ids);
+    List<T> find(List<PK> ids);
 
     Long count();
 

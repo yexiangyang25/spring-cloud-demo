@@ -16,4 +16,13 @@
         <include refid="Base_Column_List"/>
         FROM t_user
     </select>
+
+    <insert id="insert" parameterType="org.moy.spring.test.example.domain.UserEntity">
+        INSERT INTO t_user ( id, name, code)
+        VALUES (#{entity.id},#{entity.name},#{entity.code})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM t_user WHERE id= #{id}
+    </delete>
 </mapper>

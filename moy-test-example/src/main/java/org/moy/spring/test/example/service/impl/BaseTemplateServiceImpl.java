@@ -2,7 +2,7 @@ package org.moy.spring.test.example.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.moy.spring.test.example.repository.BaseRepository;
-import org.moy.spring.test.example.service.BaseService;
+import org.moy.spring.test.example.service.BaseTemplateService;
 
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author 叶向阳
  * @since 1.0
  */
-public abstract class BaseServiceImpl<T, PK extends Serializable> implements BaseService<T, PK> {
+public abstract class BaseTemplateServiceImpl<T, PK extends Serializable> extends BaseTxServiceImpl implements BaseTemplateService<T, PK> {
 
     public static final String ENTITY_SUFFIX = "Entity";
     public static final String REPOSITORY_SUFFIX = "Repository";
@@ -28,12 +28,13 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
     /**
      * <p>Description:[借助spring初始化bean执行方法]</p>
      * Created on 2018/10/10
+     *
      * @author 叶向阳
      */
     @PostConstruct
-    private void initBind(){
+    private void initBind() {
         // 获取继承该类的类名 即子类
-        Class<? extends BaseServiceImpl> subClass = this.getClass();
+        Class<? extends BaseTemplateService> subClass = this.getClass();
         String entityRepositoryName = "";
         String entityName = "";
         String errorMsg;
@@ -57,7 +58,7 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
         } catch (Exception e) {
             if (StringUtils.isEmpty(entityName)) {
                 errorMsg = String.format("初始化业务操作类模板失败,[业务操作类%s]继承[%s]的必须申明两个泛型参数,第一个泛型形参为数据库实体名,第二个泛型形参为数据库实体名主键字段对应类型!",
-                        subClass.getSimpleName(), BaseServiceImpl.class.getSimpleName());
+                        subClass.getSimpleName(), BaseTemplateService.class.getSimpleName());
             } else {
                 errorMsg = String.format("初始化业务操作类模板失败,[业务操作类%s]必须要有数据库操作类实例[字段名必须为:%s],[%s必须继承%s]!",
                         subClass.getSimpleName(), entityRepositoryName, entityRepositoryName, BaseRepository.class.getSimpleName());
@@ -111,11 +112,6 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
     }
 
     @Override
-    public Integer deleteAll(PK[] ids) {
-        return baseRepository.deleteAll(ids);
-    }
-
-    @Override
     public Integer update(T entity) {
         return baseRepository.update(entity);
     }
@@ -146,7 +142,7 @@ public abstract class BaseServiceImpl<T, PK extends Serializable> implements Bas
     }
 
     @Override
-    public List<T> find(PK[] ids) {
+    public List<T> find(List<PK> ids) {
         return baseRepository.find(ids);
     }
 
