@@ -14,4 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public abstract class BaseTest {
+
+    public static final Long TEST_ID = 1L;
 }

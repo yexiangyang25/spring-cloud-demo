@@ -33,7 +33,8 @@ public class UserRepositoryTest extends BaseTest {
     public void insert() {
         UserEntity entity = new UserEntity();
         String uid = UUID.randomUUID().toString();
-        entity.setId(6L);
+        repository.delete(TEST_ID);
+        entity.setId(TEST_ID);
         entity.setCode(uid);
         entity.setName(uid);
         Integer result = repository.insert(entity);

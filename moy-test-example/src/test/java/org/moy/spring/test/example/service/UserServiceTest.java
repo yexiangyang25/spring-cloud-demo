@@ -32,8 +32,8 @@ public class UserServiceTest extends BaseTest {
     public void insert() {
         UserEntity entity = new UserEntity();
         String uid = UUID.randomUUID().toString();
-        Long id = 10L;
-        entity.setId(id);
+        service.delete(TEST_ID);
+        entity.setId(TEST_ID);
         entity.setCode(uid);
         entity.setName(uid);
         Integer result = service.insert(entity);
