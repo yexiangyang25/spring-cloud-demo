@@ -32,6 +32,7 @@ public abstract class BaseTemplateServiceImpl<T, PK extends Serializable> extend
      * @author 叶向阳
      */
     @PostConstruct
+    @SuppressWarnings("unchecked")
     private void initBind() {
         // 获取继承该类的类名 即子类
         Class<? extends BaseTemplateService> subClass = this.getClass();
