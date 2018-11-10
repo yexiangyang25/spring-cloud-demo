@@ -76,18 +76,18 @@ subprojects {
 
     }
 
-    // ***排除所有模块依赖
-    configurations {
+// *** 排除所有模块依赖
+//    configurations {
 //        all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-test'
-    }
+//    }
 
-    // *** gradle 管理依赖常用例子
-    /*compile('org.springframework:spring-test:springVersion'){
-        force = true // 冲突时优先使用该版本
-        exclude module: 'spring-test' // 依据构建名称排除
-        exclude group: 'org.springframework' // 依据组织名称排除
-        exclude group: 'org.springframework', module: 'spring-test' // 依据组织名称 +构件名称排除
-        transitive = false // 为本依赖关闭依赖传递特性
-    }*/
-    // ---
+// *** gradle 管理依赖常用例子
+//    compile('org.springframework:spring-test:springVersion'){
+//        force = true // 冲突时优先使用该版本
+//        exclude module: 'spring-test' // 依据构建名称排除
+//        exclude group: 'org.springframework' // 依据组织名称排除
+//        exclude group: 'org.springframework', module: 'spring-test' // 依据组织名称 +构件名称排除
+//        transitive = false // 为本依赖关闭依赖传递特性
+//    }
+// ---
 }
