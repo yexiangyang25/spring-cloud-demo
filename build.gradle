@@ -10,6 +10,7 @@ repositories {
 buildscript {
     ext {
         springBootVersion = '2.0.1.RELEASE'
+        springManagementPluginVersion = '1.0.5.RELEASE'
         lang3Version = '3.6'
         collectionsVersion = '4.1'
         httpclientVersion = '4.5.3'
@@ -22,6 +23,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:${springManagementPluginVersion}"
     }
 }
 // *** 定义所有子模块通用属性
@@ -41,7 +43,7 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR1'
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.RELEASE'
         }
     }
 
