@@ -1,15 +1,15 @@
-group 'org.moy.spring.cloud'
-version '1.0-SNAPSHOT'
+group 'com.moy.springs'
+version "${projectVersion}"
 
 repositories {
-//    maven { url 'https://repo.spring.io/libs-milestone' }
-//    mavenLocal() // 使用maven本地仓库
     mavenCentral()
 }
 
 buildscript {
     ext {
+        projectVersion = '1.0-SNAPSHOT'
         springBootVersion = '2.0.1.RELEASE'
+        springCloudVersion = 'Finchley.SR2'
         springManagementPluginVersion = '1.0.5.RELEASE'
         lang3Version = '3.6'
         collectionsVersion = '4.1'
@@ -26,24 +26,23 @@ buildscript {
         classpath "io.spring.gradle:dependency-management-plugin:${springManagementPluginVersion}"
     }
 }
+
 // *** 定义所有子模块通用属性
 subprojects {
-    apply plugin: 'java'
+
     apply plugin: 'eclipse'
     apply plugin: 'idea'
+    apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    tasks.withType(JavaCompile) {
-        options.encoding = 'UTF-8'
+    repositories {
+//        maven { url 'https://repo.spring.io/libs-milestone' }
+        mavenCentral()
     }
-
     dependencyManagement {
         imports {
-            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.RELEASE'
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
 
@@ -52,17 +51,15 @@ subprojects {
         compile("org.apache.commons:commons-lang3:${lang3Version}")
         compile "org.apache.commons:commons-collections4:${collectionsVersion}"
         compile("org.apache.httpcomponents:httpclient:${httpclientVersion}")
-        // ---
 
         // *** spring boot
         compile('org.springframework.boot:spring-boot-starter')
         compile('org.springframework.boot:spring-boot-starter-web')
-//        compile('org.springframework.boot:spring-boot-starter-actuator')
+        compile('org.springframework.boot:spring-boot-starter-actuator')
 //        compile('org.springframework.boot:spring-boot-starter-data-redis')
 //        compile('org.springframework.boot:spring-boot-starter-quartz')
 //        compile('org.springframework.boot:spring-boot-starter-thymeleaf')
         testCompile('org.springframework.boot:spring-boot-starter-test')
-        // ---
 
         // *** spring cloud
 //        compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
@@ -72,22 +69,25 @@ subprojects {
 //        compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
 //        compile('org.springframework.cloud:spring-cloud-config-server')
 //        compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
-        // ---
 
+        // *** gradle 管理依赖常用例子
+//        compile('org.springframework:spring-test:springVersion') {
+//            force = true // 冲突时优先使用该版本
+//            exclude module: 'spring-test' // 依据构建名称排除
+//            exclude group: 'org.springframework' // 依据组织名称排除
+//            exclude group: 'org.springframework', module: 'spring-test' // 依据组织名称 +构件名称排除
+//            transitive = false // 为本依赖关闭依赖传递特性
+//        }
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
     }
 
 // *** 排除所有模块依赖
 //    configurations {
 //        all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-test'
 //    }
-
-// *** gradle 管理依赖常用例子
-//    compile('org.springframework:spring-test:springVersion'){
-//        force = true // 冲突时优先使用该版本
-//        exclude module: 'spring-test' // 依据构建名称排除
-//        exclude group: 'org.springframework' // 依据组织名称排除
-//        exclude group: 'org.springframework', module: 'spring-test' // 依据组织名称 +构件名称排除
-//        transitive = false // 为本依赖关闭依赖传递特性
-//    }
-// ---
 }
