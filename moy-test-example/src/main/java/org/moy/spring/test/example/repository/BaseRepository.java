@@ -6,11 +6,12 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * <p> 基础数据库操作类
+ * <p>Description: [基础 数据操作]</p>
  * Created on 2018/10/10
  *
- * @author 叶向阳
- * @since 1.0
+ * @author <a href="mailto: moy25@foxmail.com">叶向阳</a>
+ * @version 1.0
+ * Copyright (c) 2018 墨阳
  */
 public interface BaseRepository<T, PK extends Serializable> {
 

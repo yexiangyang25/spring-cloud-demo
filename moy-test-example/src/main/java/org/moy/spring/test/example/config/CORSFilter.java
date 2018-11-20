@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * <p> 解决ajax跨域问题
- * Created on 2018/9/10
+ * <p>Description: [解决ajax跨域问题]</p>
+ * Created on 2018/10/10
  *
- * @author 叶向阳
- * @since 1.0
+ * @author <a href="mailto: moy25@foxmail.com">叶向阳</a>
+ * @version 1.0
+ * Copyright (c) 2018 墨阳
  */
 @Component
-public class CORSFilter  implements Filter {
+public class CORSFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

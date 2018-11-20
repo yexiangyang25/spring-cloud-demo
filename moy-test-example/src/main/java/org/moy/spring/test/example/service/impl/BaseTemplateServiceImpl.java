@@ -11,11 +11,12 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
- * <p> 基础服务实现类
+ * <p>Description: [基础 接口实现]</p>
  * Created on 2018/10/10
  *
- * @author 叶向阳
- * @since 1.0
+ * @author <a href="mailto: moy25@foxmail.com">叶向阳</a>
+ * @version 1.0
+ * Copyright (c) 2018 墨阳
  */
 public abstract class BaseTemplateServiceImpl<T, PK extends Serializable> extends BaseTxServiceImpl implements BaseTemplateService<T, PK> {
 

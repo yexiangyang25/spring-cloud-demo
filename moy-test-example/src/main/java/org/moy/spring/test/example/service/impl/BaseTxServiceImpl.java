@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>Description: [数据库配置事务]</p>
- * Created on 2018/10/22
+ * Created on 2018/10/10
  *
- * @author <a href="mailto: yexiangyang@cn.wilmar-intl.com">叶向阳</a>
+ * @author <a href="mailto: moy25@foxmail.com">叶向阳</a>
  * @version 1.0
- * Copyright (c) 2018 丰益（上海）信息技术有限公司
+ * Copyright (c) 2018 墨阳
  */
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 36000, rollbackFor = Exception.class)
 public abstract class BaseTxServiceImpl {

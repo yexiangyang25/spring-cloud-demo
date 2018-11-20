@@ -3,11 +3,12 @@ package org.moy.spring.test.example.domain;
 import java.io.Serializable;
 
 /**
- * <p> 用户 实体
+ * <p>Description: [用户 实体]</p>
  * Created on 2018/10/10
  *
- * @author 叶向阳
- * @since 1.0
+ * @author <a href="mailto: moy25@foxmail.com">叶向阳</a>
+ * @version 1.0
+ * Copyright (c) 2018 墨阳
  */
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 270995155524859850L;

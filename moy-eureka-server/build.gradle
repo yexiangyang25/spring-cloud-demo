@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'org.moy.spring.cloud'
+version "${projectVersion}"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+}
