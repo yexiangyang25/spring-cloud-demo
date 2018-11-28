@@ -30,6 +30,8 @@ public class HelloController {
     public String index() {
         List<String> services = discoveryClient.getServices();
         String description = discoveryClient.description();
-        return description + " : " + ArrayUtils.toString(services);
+        String result = description + " : " + ArrayUtils.toString(services);
+        LOG.info(result);
+        return result;
     }
 }
