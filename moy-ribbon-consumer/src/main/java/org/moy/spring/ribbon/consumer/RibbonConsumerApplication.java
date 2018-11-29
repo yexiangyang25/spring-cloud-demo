@@ -19,9 +19,11 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 public class RibbonConsumerApplication {
 
-    // 开启客户端负载均衡
-    @Bean
+    /**
+     * 开启客户端负载均衡
+     */
     @LoadBalanced
+    @Bean
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
