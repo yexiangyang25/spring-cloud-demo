@@ -13,4 +13,5 @@ include 'moy-test-example'
 include 'moy-eureka-server'
 include 'moy-eureka-client'
 include 'moy-ribbon-consumer'
+include 'moy-feign-consumer'
 

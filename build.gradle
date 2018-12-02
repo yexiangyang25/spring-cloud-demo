@@ -1,4 +1,4 @@
-group 'com.moy.springs'
+group 'org.moy.spring.cloud'
 version "${projectVersion}"
 
 repositories {
