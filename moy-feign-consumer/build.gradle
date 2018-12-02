@@ -12,4 +12,6 @@ repositories {
 dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-openfeign')
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+
+    compile(project(":moy-common-sdk"))
 }
