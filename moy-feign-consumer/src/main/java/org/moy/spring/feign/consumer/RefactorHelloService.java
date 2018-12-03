@@ -1,9 +1,8 @@
 package org.moy.spring.feign.consumer;
 
-
-import org.moy.spring.service.HelloService;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 /**
@@ -16,5 +15,8 @@ import org.springframework.stereotype.Service;
  */
 @FeignClient("moy-eureka-client")
 @Service
-public interface RefactorHelloService extends HelloService {
+public interface RefactorHelloService{
+
+    @GetMapping("/hello")
+    String index();
 }
