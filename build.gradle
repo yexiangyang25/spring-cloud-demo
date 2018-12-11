@@ -8,7 +8,7 @@ repositories {
 buildscript {
     ext {
         projectVersion = '1.0-SNAPSHOT'
-        springBootVersion = '2.0.1.RELEASE'
+        springBootVersion = '2.0.5.RELEASE'
         springCloudVersion = 'Finchley.SR2'
         springManagementPluginVersion = '1.0.5.RELEASE'
         lang3Version = '3.6'
